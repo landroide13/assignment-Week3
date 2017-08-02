@@ -67,11 +67,14 @@ end
 #----------------- Delete a List ------------------
 
 post "/delist/name" do
-  list_dump = List.new("#{params[:id]}")
-  target = list_dump.id.concat(".md")
-  files = Dir["data/*.md"]
-  files.each do |file|
-    file.delete("target")
+  @list_dump = List.new("#{params[:id]}").concat(".md")
+  #@target = list_dump.concat(".md")
+  directory = Dir["data/*.md"]
+  #files = directory
+  directory.each do |dir|
+    if dir.basename == @list_dump
+        delete(@list_dump)
+    end
   end  
   redirect back
 end
