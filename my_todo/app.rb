@@ -69,9 +69,10 @@ end
 post "/delist/name" do
   list_dump = List.new("#{params[:id]}").filename
   @target = list_dump.split("/")[1]
-  File.basename("data/*.md").each do |dir|
+  Dir["data/*.md"].each do |dir|
+    dir = dir.split("/")[1]
     if dir == @target
-        dir.delete(@target)
+        File.delete(@target)
     end
   end  
   redirect back

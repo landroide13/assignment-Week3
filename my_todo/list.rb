@@ -15,7 +15,6 @@ class List
     files = Dir["data/*.md"]
     lists = []
     files.each do |e|
-      #e = e[-4]
       e = e.split("/")[1].split(".")[0]
       list = List.new(e)
       list.load_from_file
