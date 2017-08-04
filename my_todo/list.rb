@@ -32,6 +32,13 @@ class List
   def filename
     "data/#{id}.md"
   end
+#----------------------- delete list-Dir ----------------
+
+  def delete_list(dir_list)
+    File.delete(dir_list)
+  end
+
+#-------------------------------------------------------- 
 
   def toggle_item(name)
     puts "Finding |#{name}|"

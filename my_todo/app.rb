@@ -68,20 +68,18 @@ end
 
 post "/delist/name" do
   list_dump = List.new("#{params[:id]}").filename
-  #@target = list_dump.split("/")[1]
-  @target = list_dump
+   @target = list_dump
   Dir["data/*.md"].each do |dir|
-    dir = dir.split("/")[1]
     if dir == @target
-        File.delete(@target)
+       File.delete(@target)
     end
-  end  
+  end 
   redirect back
 end
 
 
 
-#----------------Time Setter--------------------
+#----------------Time Setter----------------------
 
 time = Time.new()
 @today = "#{time.day}/#{time.month}/#{time.year}"
