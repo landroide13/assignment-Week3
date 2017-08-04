@@ -68,7 +68,8 @@ end
 
 post "/delist/name" do
   list_dump = List.new("#{params[:id]}").filename
-  @target = list_dump.split("/")[1]
+  #@target = list_dump.split("/")[1]
+  @target = list_dump
   Dir["data/*.md"].each do |dir|
     dir = dir.split("/")[1]
     if dir == @target
